@@ -1,0 +1,14 @@
+<%= form_tag(url_for(action: 'create'), method: 'post', class: 'form-group') %>
+<%= label_tag 'Titre' %>
+<%= text_field_tag 'title', nil, class: '', placeholder: 'titre'%>
+<%= label_tag 'Date De Debut' %>
+<%= date_field_tag 'start_date', nil, class: ''%>
+<%= label_tag 'Durée' %>
+<%= number_field_tag 'duration', nil, class: '', placeholder: '60'%>
+<%= label_tag 'prix' %>
+<%= number_field_tag 'price', nil, class: '', placeholder: '15'%>
+<%= label_tag 'Lieux' %>
+<%= text_field_tag 'location', nil, class: '', placeholder: 'paris, zenith'%>
+<%= label_tag 'Description' %>
+<%= text_area_tag 'description', nil, class: '', placeholder: '...'%>
+<%= submit_tag('Créer', class: '') %>

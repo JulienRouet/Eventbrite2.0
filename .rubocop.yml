@@ -1,0 +1,25 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  DisplayStyleGuide: true
+  DisplayCopNames: true
+  Exclude:
+    - 'db/**/*'
+    - 'vendor/**/*'
+    - 'script/**/*'
+    - 'config/environments/*.rb'
+    - 'bin/*'
+
+  Rails:
+    Enabled: True
+
+  Metrics/BlockLength:
+    Exclude:
+      - 'spec/**/*.rb'
+      - 'Guardfile'
+      - 'vendor/bundle'
+
+Style/Documentation:
+  Enabled: False

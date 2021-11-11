@@ -1,0 +1,15 @@
+<%= form_tag(url_for(action: 'update'), method: 'put') %>
+<%= label_tag 'Titre' %>
+<%= text_field_tag 'title', @event.title %>
+<%= label_tag 'Date de début' %>
+<%= date_field_tag 'start_date', @event.start_date %>
+<%= label_tag 'Durée' %>
+<%= number_field_tag 'duration', @event.duration %>
+<%= label_tag 'Lieux' %>
+<%= text_field_tag 'location', @event.location %>
+<%= label_tag 'Prix' %>
+<%= text_field_tag 'price', @event.price %>
+<%= label_tag 'Description' %>
+<%= text_field_tag 'description', @event.description %>
+<%= submit_tag('modifier') %>
+<%= link_to 'supprimer', event_path, method: :delete, data: {:confirm => 'Voulez vous vraiment supprimer ce gossip ?'} %>

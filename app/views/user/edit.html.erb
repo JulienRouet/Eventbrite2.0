@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+  <div class="card bg-dark border border-dark p-5">
+    <h3 class="border-bottom pb-3 mb-3">Modifier profil</h3>
+    <%= form_tag(url_for(action: 'update'), method: 'put', class: 'form-group') do %>
+      <div class="row">
+        <div class="col">
+          <%= label_tag 'Prenom' %>
+          <div class="input-group mb-3">
+              <span class="input-group-text border-secondary bg-dark text-white">
+                <span class="iconify" data-icon="mdi:account-circle-outline"></span>
+              </span>
+            <%= text_field_tag 'first_name', @user.first_name, class: 'form-control border-secondary bg-dark text-white', placeholder: 'francis' %>
+          </div>
+        </div>
+        <div class="col">
+          <%= label_tag 'Nom' %>
+          <div class="input-group mb-3">
+              <span class="input-group-text border-secondary bg-dark text-white">
+                <span class="iconify" data-icon="mdi:account-circle-outline"></span>
+              </span>
+            <%= text_field_tag 'last_name', @user.last_name, class: 'form-control border-secondary bg-dark text-white', placeholder: 'cabrel' %>
+          </div>
+        </div>
+        <div class="col">
+          <%= label_tag 'description' %>
+          <div class="input-group mb-3">
+              <span class="input-group-text border-secondary bg-dark text-white">
+                <span class="iconify" data-icon="mdi:table-of-contents"></span>
+              </span>
+            <%= text_area_tag 'description', @user.description, class: 'form-control bg-dark text-white border-secondary hover-shadow', placeholder: 'decrit toi en moins de 140 characteres', rows: "8", style: "height:100%;" %>
+          </div>
+        </div>
+      </div>
+      <%= submit_tag('Modifier', class: 'btn btn-secondary mt-3') %>
+    <% end %>
+  </div>
+</div>

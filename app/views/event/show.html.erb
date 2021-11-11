@@ -1,0 +1,13 @@
+<%= @event.title %>
+<%= @event.description %>
+<%= @event.start_date %>
+<%= @event.location %>
+<%= @event.price %>
+<%= @attendances.count %>
+<br/>
+<!-- TODO: afficher le lien de participation uniquement au users qui ne particie pas encore a l'event, sinon afficher
+ une phrase style vous participez deja -->
+<%= link_to 'participer' , new_event_charge_path(event_id: @event.id) %>
+<% if creator? %>
+  <%= link_to 'voir la liste des invités', event_attendances_path(event_id: params[:id]) %>
+<% end %>

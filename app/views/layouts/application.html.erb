@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eventbrite</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+
+  <!-- iconify -->
+  <script src="https://code.iconify.design/2/2.0.4/iconify.min.js"></script>
+</head>
+
+<body class='bg-dark text-white'>
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Eventbrite", root_path, class: 'navbar-brand text-white' %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Accueil", root_path, class: 'nav-link text-white' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Créer un évenement", new_event_path, class: 'nav-link text-white' %>
+        </li>
+      </ul>
+    </div>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle text-muted" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="iconify" data-icon="mdi:account"></span>
+      </a>
+      <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Déconnection", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
+          </li>
+          <li>
+            <%= link_to "Modifier email", edit_user_registration_path, class: 'nav-link text-white' %>
+          </li>
+          <li>
+            <%= link_to 'Mes évenements', user_path(current_user.id), class: 'nav-link text-white' %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign in", new_user_session_path, class: 'nav-link text-white' %>
+          </li>
+          <li>
+            <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white' %>
+          </li>
+        <% end %>
+      </ul>
+    </li>
+  </div>
+</nav>
+<div class='container my-5'>
+  <div class="row justify-content-center">
+    <div class="col-sm-5">
+      <% flash.each do |type, msg| %>
+        <% if type == 'alert' %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span class="iconify mb-1 mr-3" data-icon="mdi:alert-circle-outline"></span>
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+          </div>
+        <% elsif type == 'notice' %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <span class="iconify mb-1 mr-3" data-icon="mdi:alert-circle-outline"></span>
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+          </div>
+        <% else %>
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <span class="iconify mb-1 mr-3" data-icon="mdi:alert-circle-outline"></span>
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            </button>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= yield %>
+</div>
+
+</body>
+</html>

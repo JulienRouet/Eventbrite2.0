@@ -1,0 +1,35 @@
+<div class="row my-3">
+  <div class="col text-left ml-5">
+    <h3 class="">
+      <span class="iconify mb-1" data-icon="mdi:account-circle-outline"></span>
+      <%= @user.first_name %> <%= @user.last_name %>
+    </h3>
+    <p><%= @user.description %></p>
+  </div>
+  <div class="col-sm-4 text-left ml-5">
+    <p>
+      <span class="iconify mb-1 text-secondary" data-icon="mdi:email-outline"></span>
+      <%= @user.email %>
+    </p>
+  </div>
+  <div class="col-sm-2 text-left">
+    <%= link_to 'modifier compte', edit_user_registration_path, class: 'nav-link text-white' %>
+    <%= link_to 'modifier profil', edit_user_path, class: 'nav-link text-white' %>
+  </div>
+</div>
+<div class='row my-3'>
+  <% @events.each do |event| %>
+    <div class="col-sm-4 my-3">
+      <div class="card bg-dark text-white">
+        <img src="https://img.20mn.fr/sIChN5W-TCG0VWSpGYJYLw/768x492_tous-trolls.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class='card-title'><%= event.title %></h5>
+          <p class='card-text'><%= event.start_date %></p>
+          <p class='card-text'><%= event.description %></p>
+          <p class='card-text text-muted'><%= event.price %> $</p>
+          <%= link_to 'Voir', event_path(event.id), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

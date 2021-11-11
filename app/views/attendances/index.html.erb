@@ -1,0 +1,6 @@
+<% @attendees.each do |attendee| %>
+  <%= attendee.first_name %>
+  <%= attendee.last_name %>
+  <%= attendee.email %>
+<% end %>
+<%= link_to "modifier l'evenement", edit_event_path(params[:event_id]) %>
